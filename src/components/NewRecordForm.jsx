@@ -8,23 +8,38 @@ const NewRecordForm = ({ records, setRecords }) => {
   const [form, setForm] = useState({
     artist: "",
     album: "",
-    date: "",
     label: "",
     releaseDate: "",
-    genre: "",
+    releaseDateType: "date", // Added field for release date type
+    category: "Rock Progressive",
+    recordNumber: "",
+    recordState: "New", // Default record state
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Validate and update form state based on input type
+    if (name === "recordNumber" && isNaN(value)) {
+      return; // Prevent non-numeric input for recordNumber
+    }
+
     setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Ensure recordNumber is not negative
+    if (parseInt(form.recordNumber) < 0) {
+      alert("Record Number cannot be negative.");
+      return;
+    }
+
     setRecords([...records, form]);
-    navigate("/");
+    navigate("/collections");
   };
 
   return (
@@ -49,15 +64,6 @@ const NewRecordForm = ({ records, setRecords }) => {
           onChange={handleChange}
         />
 
-        <label htmlFor="date">Date:</label>
-        <input
-          type="text"
-          id="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-        />
-
         <label htmlFor="label">Label:</label>
         <input
           type="text"
@@ -67,23 +73,48 @@ const NewRecordForm = ({ records, setRecords }) => {
           onChange={handleChange}
         />
 
-        <label htmlFor="releaseDate">Release Date:</label>
+        <label htmlFor="releaseDate">Released Date:</label>
         <input
-          type="text"
+          type={form.releaseDateType} // Dynamic type based on form field
           id="releaseDate"
           name="releaseDate"
           value={form.releaseDate}
           onChange={handleChange}
         />
 
-        <label htmlFor="genre">Genre:</label>
+        <label htmlFor="recordNumber">Record Number:</label>
         <input
-          type="text"
-          id="genre"
-          name="genre"
-          value={form.genre}
+          type="number"
+          id="recordNumber"
+          name="recordNumber"
+          value={form.recordNumber}
           onChange={handleChange}
         />
+
+        <label htmlFor="recordState">State of the Records:</label>
+        <select
+          id="recordState"
+          name="recordState"
+          value={form.recordState}
+          onChange={handleChange}
+        >
+          <option value="New">New</option>
+          <option value="Used">Used</option>
+          <option value="Damaged">Damaged</option>
+        </select>
+
+        <label htmlFor="category">Category:</label>
+        <select
+          id="category"
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+        >
+          <option value="Rock Progressive">Rock Progressive</option>
+          <option value="HipHop">HipHop</option>
+          <option value="AfroHouse">AfroHouse</option>
+          <option value="Free Jazz">Free Jazz</option>
+        </select>
 
         <button type="submit">Submit</button>
       </form>

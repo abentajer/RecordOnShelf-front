@@ -2,33 +2,62 @@
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #503b31;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  margin-top: 50px; /* Adding margin on top */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+
+.new-record-form h2 {
+  text-align: center; /* Center heading */
+  margin-bottom: 20px; /* Space below heading */
 }
 
 .new-record-form label {
-  display: block;
-  margin-bottom: 10px;
+  display: none; /* Hide labels since input names will be inside input boxes */
 }
 
-.new-record-form input {
-  width: 100%;
-  padding: 8px;
+.new-record-form input,
+.new-record-form select {
+  width: calc(
+    50% - 10px
+  ); /* Set width for two inputs per row with some spacing */
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #5e4c42; /* Updated input and select box color */
+  color: #ffffff; /* Text color */
 }
 
 .new-record-form button {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: #cedfd9;
+  color: #503b31;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 5px;
   cursor: pointer;
+  display: block;
+  margin: auto;
+  margin-top: 20px; /* Space above button */
 }
 
 .new-record-form button:hover {
-  background-color: #0056b3;
+  background-color: #a6c9e2;
+}
+
+@media (max-width: 600px) {
+  .new-record-form input,
+  .new-record-form select {
+    width: 100%;
+  }
 }

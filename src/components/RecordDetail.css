@@ -1,0 +1,44 @@
+.record-detail {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.record-detail h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.record-detail form {
+  display: flex;
+  flex-direction: column;
+}
+
+.record-detail label {
+  margin-bottom: 10px;
+}
+
+.record-detail input {
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.record-detail button {
+  padding: 10px 20px;
+  background-color: #503b31;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: center;
+}
+
+.record-detail button:hover {
+  background-color: #5e4c42;
+}

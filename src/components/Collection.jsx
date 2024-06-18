@@ -12,16 +12,23 @@ const Collection = ({ records }) => {
       </Link>
       <div className="card-list">
         {records.map((record, index) => (
-          <div key={index} className="card">
-            <div className="card-header">
-              <h3>{`${record.artist} - ${record.album} (${record.date})`}</h3>
-              <p>{`${record.label} - ${record.releaseDate}`}</p>
+          <Link
+            key={index}
+            to={`/record-detail/${record.id}`}
+            className="card-link"
+          >
+            <div className="card">
+              <div className="card-header">
+                <h3>{`${record.artist} - ${record.album} (${record.releaseDate})`}</h3>
+                <p>{`${record.label} - Released Date: ${record.releaseDate}`}</p>
+              </div>
+              <div className="card-body">
+                <p>Record Number: {record.recordNumber}</p>
+                <p>State of the Records: {record.recordState}</p>
+                <p className="category">{record.category}</p>
+              </div>
             </div>
-            <div className="card-body">
-              <p>2, News</p>
-              <p>{record.genre}</p>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,10 +1,12 @@
 .collection {
   padding: 20px;
+  max-width: 1200px; /* Limit width to improve responsiveness */
+  margin: 0 auto; /* Center the collection horizontally */
 }
 
 .new-button-link {
   display: block;
-  width: 30px;
+  width: 40px;
   margin-bottom: 20px;
   text-decoration: none;
   color: #ffffff;
@@ -15,22 +17,46 @@
 }
 
 .card-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  display: block; /* Change to block to stack cards vertically */
+  margin-top: 20px; /* Add space between button and cards */
 }
 
 .card {
-  background-color: #ffffff;
+  background-color: #503b31;
   padding: 20px;
+  margin-bottom: 20px; /* Add space between cards */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #ffffff; /* Font color white */
 }
 
 .card-header {
   margin-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  color: #ffffff; /* Font color white */
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2em;
 }
 
 .card-body {
   font-size: 14px;
+  color: #ffffff; /* Font color white */
+}
+
+.card-body p {
+  margin: 5px 0;
+}
+
+.card-body .category {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card-body .category {
+  color: #ffffff; /* Font color white */
 }
