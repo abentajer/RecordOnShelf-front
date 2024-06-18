@@ -1,0 +1,47 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #ebfcfb;
+  padding: 20px;
+  gap: 20px;
+  font-family: "Poppins", sans-serif; /* Use Poppins font */
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column; /* Flex direction column for stacking content */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+  max-width: 600px; /* Adjust max-width as per your design */
+  margin: auto;
+}
+
+.section-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  max-width: 100%;
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure the image takes the full width of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    flex-direction: row; /* Arrange sections side by side on larger screens */
+    align-items: flex-start; /* Align sections at the top */
+  }
+
+  .section-2 {
+    flex: 1; /* Allow section 2 to take remaining space */
+    margin-left: 20px; /* Add space between section 1 and section 2 */
+  }
+}

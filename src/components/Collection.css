@@ -1,0 +1,36 @@
+.collection {
+  padding: 20px;
+}
+
+.new-button-link {
+  display: block;
+  width: 30px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #503b31;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  font-size: 14px;
+}

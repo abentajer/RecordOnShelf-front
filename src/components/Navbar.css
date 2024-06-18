@@ -1,0 +1,83 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #503b31; /* Updated background color */
+  color: #fff;
+  position: relative;
+  margin-top: 0; /* Remove margin on top */
+  border: 0; /* Remove border margin */
+  font-family: "Poppins", sans-serif; /* Use Poppins font */
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  margin-right: 1.5rem; /* Adjust spacing between links */
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-profile .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 2px;
+  object-fit: cover;
+}
+
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar-toggle-icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #503b31; /* Adjust background color for mobile */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
