@@ -6,6 +6,11 @@ import RecordDetail from "./RecordDetail";
 import "./Collection.css"; // Import CSS file for Collection
 
 const Collection = ({ records, setRecords }) => {
+  const handleDelete = (id) => {
+    // Implement delete functionality
+    const updatedRecords = records.filter((record) => record.id !== id);
+    setRecords(updatedRecords);
+  };
   return (
     <div className="collection">
       <Link to="/new-record" className="new-button-link">
@@ -30,6 +35,7 @@ const Collection = ({ records, setRecords }) => {
               </div>
             </div>
           </Link>
+          
         ))}
       </div>
 

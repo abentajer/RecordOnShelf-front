@@ -1,34 +1,37 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./RecordDetail.css"; // Import CSS file for RecordDetail
 
-const RecordDetail = ({ records, setRecords }) => {
+const RecordDetail = ({ records, updateRecord, deleteRecord }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const record = records.find((record) => record.id === parseInt(id));
 
+  // State to hold editable record fields
+  const [editedRecord, setEditedRecord] = useState(record);
   if (!record) {
     return <p>Record not found</p>;
   }
 
-  const handleSave = () => {
-    // Implement save functionality
-    console.log("Save button clicked");
-    // Example: Update the record's state
-    const updatedRecords = records.map((r) =>
-      r.id === record.id ? { ...r, recordState: "Updated" } : r
-    );
-    setRecords(updatedRecords);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedRecord({
+      ...editedRecord,
+      [name]: value
+    });
+  };
+
+
+const handleSave = () => {
+    updateRecord(editedRecord);
+    navigate("/collections"); // Redirect to the collection page after saving
   };
 
   const handleDelete = () => {
-    // Implement delete functionality
-    console.log("Delete button clicked");
-    const updatedRecords = records.filter((r) => r.id !== record.id);
-    setRecords(updatedRecords);
-    navigate("/"); // Redirect to the collection page after deletion
+    deleteRecord(record.id);
+    navigate("/collections"); // Redirect to the collection page after deletion
   };
 
   return (
@@ -40,8 +43,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="artist"
           name="artist"
-          value={record.artist}
-          readOnly
+          value={editedRecord.artist}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="album">Album:</label>
@@ -49,8 +52,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="album"
           name="album"
-          value={record.album}
-          readOnly
+          value={editedRecord.album}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="label">Label:</label>
@@ -58,8 +61,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="label"
           name="label"
-          value={record.label}
-          readOnly
+          value={editedRecord.label}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="releaseDate">Released Date:</label>
@@ -67,8 +70,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="releaseDate"
           name="releaseDate"
-          value={record.releaseDate}
-          readOnly
+          value={editedRecord.releaseDate}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="recordNumber">Record Number:</label>
@@ -76,8 +79,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="number"
           id="recordNumber"
           name="recordNumber"
-          value={record.recordNumber}
-          readOnly
+          value={editedRecord.recordNumber}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="recordState">State of the Records:</label>
@@ -85,8 +88,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="recordState"
           name="recordState"
-          value={record.recordState}
-          readOnly
+          value={editedRecord.recordState}
+          onChange={handleInputChange}
         />
 
         <label htmlFor="category">Category:</label>
@@ -94,8 +97,8 @@ const RecordDetail = ({ records, setRecords }) => {
           type="text"
           id="category"
           name="category"
-          value={record.category}
-          readOnly
+          value={editedRecord.category}
+          onChange={handleInputChange}
         />
 
         <div className="form-buttons">

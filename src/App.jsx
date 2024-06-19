@@ -14,12 +14,23 @@ const Profile = () => <h1>Profile Page</h1>;
 
 function App() {
   const [records, setRecords] = useState([]);
+  const [user, setUser] = useState({
+    username: "john_doe",
+    email: "john.doe@example.com",
+    // Add more fields as needed
+  });
 
   const updateRecord = (updatedRecord) => {
     setRecords((prevRecords) =>
       prevRecords.map((record) =>
         record.id === updatedRecord.id ? updatedRecord : record
       )
+    );
+  };
+
+  const deleteRecord = (recordId) => {
+    setRecords((prevRecords) =>
+      prevRecords.filter((record) => record.id !== recordId)
     );
   };
 
@@ -38,7 +49,7 @@ function App() {
         <Route
           path="/record-detail/:id"
           element={
-            <RecordDetail records={records} updateRecord={updateRecord} />
+            <RecordDetail records={records} updateRecord={updateRecord} deleteRecord={deleteRecord}/>
           }
         />
       </Routes>
