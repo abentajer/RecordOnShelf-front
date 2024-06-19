@@ -31,7 +31,7 @@ function App() {
         <Route path="/collections" element={<Collection records={records} />} />
         <Route
           path="/new-record"
-          element={<NewRecordForm records={records} setRecords={setRecords} />}
+          element={<NewRecordForm setRecords={setRecords} />}
         />
         <Route path="/categories" element={<Category records={records} />} />
         <Route path="/profile" element={<Profile />} />

@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import RecordDetail from "./RecordDetail";
 import "./Collection.css"; // Import CSS file for Collection
 
-const Collection = ({ records }) => {
+const Collection = ({ records, setRecords }) => {
   return (
     <div className="collection">
       <Link to="/new-record" className="new-button-link">
         New
       </Link>
       <div className="card-list">
-        {records.map((record, index) => (
+        {records.map((record) => (
           <Link
-            key={index}
+            key={record.id}
             to={`/record-detail/${record.id}`}
             className="card-link"
           >
@@ -31,6 +32,13 @@ const Collection = ({ records }) => {
           </Link>
         ))}
       </div>
+
+      <Routes>
+        <Route
+          path="/record-detail/:id"
+          element={<RecordDetail records={records} setRecords={setRecords} />}
+        />
+      </Routes>
     </div>
   );
 };

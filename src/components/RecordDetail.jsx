@@ -1,16 +1,35 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./RecordDetail.css"; // Import CSS file for RecordDetail
 
-const RecordDetail = ({ records }) => {
+const RecordDetail = ({ records, setRecords }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const record = records.find((record) => record.id === parseInt(id));
 
   if (!record) {
     return <p>Record not found</p>;
   }
+
+  const handleSave = () => {
+    // Implement save functionality
+    console.log("Save button clicked");
+    // Example: Update the record's state
+    const updatedRecords = records.map((r) =>
+      r.id === record.id ? { ...r, recordState: "Updated" } : r
+    );
+    setRecords(updatedRecords);
+  };
+
+  const handleDelete = () => {
+    // Implement delete functionality
+    console.log("Delete button clicked");
+    const updatedRecords = records.filter((r) => r.id !== record.id);
+    setRecords(updatedRecords);
+    navigate("/"); // Redirect to the collection page after deletion
+  };
 
   return (
     <div className="record-detail">
@@ -78,6 +97,11 @@ const RecordDetail = ({ records }) => {
           value={record.category}
           readOnly
         />
+
+        <div className="form-buttons">
+          <button type="button" onClick={handleSave}>Save</button>
+          <button type="button" onClick={handleDelete}>Delete</button>
+        </div>
       </form>
     </div>
   );

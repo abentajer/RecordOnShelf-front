@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./NewRecordForm.css"; // Import CSS file for NewRecordForm
 
 // eslint-disable-next-line react/prop-types
-const NewRecordForm = ({ records, setRecords }) => {
+const NewRecordForm = ({ setRecords }) => {
   const [form, setForm] = useState({
     artist: "",
     album: "",
@@ -38,7 +38,10 @@ const NewRecordForm = ({ records, setRecords }) => {
       return;
     }
 
-    setRecords([...records, form]);
+    setRecords((prevRecords) => {
+      return [...prevRecords, { id: prevRecords.length, ...form }];
+    });
+
     navigate("/collections");
   };
 
